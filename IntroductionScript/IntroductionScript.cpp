@@ -26,7 +26,7 @@ int main()
 	system("cls");
 	std::cout << "What is your favorite color: "; 
 	std::cin.ignore();
-	std::getline(std::cin, user_favorite_color); //Line gets ignored because of line 18
+	std::getline(std::cin, user_favorite_color);
 
 	system("cls");
 	std::cout << "What is your favorite movie: ";
