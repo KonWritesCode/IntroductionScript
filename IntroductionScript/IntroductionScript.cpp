@@ -1,34 +1,65 @@
 #include <iostream>
 #include <string>
 
+
 int main()
 {
 	std::string user_name;
-	std::string userFavoriteColor;
+	std::string user_favorite_color;
 	int user_age;
 	std::string user_favorite_movie;
 
-	std::cout << "What is your name:\n";
+	int box_length;
+	
+	//Get information from the user by asking questions
+	std::cout << "What is your name: ";
 	std::getline(std::cin, user_name);
 
-	//std::cout << "What is your age:\n";
-	//std::getline(std::cin, user_age);
+	system("cls");
+	std::cout << "What is your age: ";
+	std::cin >> user_age;
 
-	std::cout << "What is your favorite color:\n";
-	std::getline(std::cin, userFavoriteColor);
+	system("cls");
+	std::string user_age_str;
+	user_age_str = std::to_string(user_age);
 
-	std::cout << "What is your favorite movie:\n";
+	system("cls");
+	std::cout << "What is your favorite color: "; 
+	std::cin.ignore();
+	std::getline(std::cin, user_favorite_color); //Line gets ignored because of line 18
+
+	system("cls");
+	std::cout << "What is your favorite movie: ";
 	std::getline(std::cin, user_favorite_movie);
+	
+	//Find the longest string
+	box_length = user_name.length();
 
+	if (box_length < user_age_str.length())
+	{
+		box_length = user_age_str.length();
+	}
+	if(box_length < user_favorite_color.length())
+	{
+		box_length = user_favorite_color.length();
+	}
+	if (box_length < user_favorite_movie.length()) 
+	{
+		box_length = user_favorite_movie.length();
+	}
 
-	std::cout << "\n---------------------------\n";
-	std::cout << "| Profile                 |\n";
-	std::cout << "|-------------------------|\n";
-	std::cout << "| Name:           | " << user_name << "		|\n";
-//	std::cout << "| Age:            | " << user_age << "	|\n";
-	std::cout << "| Favorite color: | " << userFavoriteColor << "		|\n";
-	std::cout << "| Favorite movie: | " << user_favorite_movie << "		|\n";
-	std::cout << "---------------------------\n";
+	std::cout << box_length << " length of user_name";
 
+	//Create user profile
+	system("cls");
+	std::cout << "\n------------------" << std::string(box_length, '-') << "----\n";
+	std::cout << "| Profile           " << std::string(box_length, ' ') << " |\n";
+	std::cout << "|-------------------" << std::string(box_length, '-') << "-|\n";
+	std::cout << "| Name:           | " << user_name << std::string(box_length - user_name.length(), ' ') << " |\n";
+	std::cout << "| Age:            | " << user_age_str << std::string(box_length - user_age_str.length(), ' ') << " |\n";
+	std::cout << "| Favorite color: | " << user_favorite_color << std::string(box_length - user_favorite_color.length(), ' ') << " |\n";
+	std::cout << "| Favorite movie: | " << user_favorite_movie << std::string(box_length - user_favorite_movie.length(), ' ') << " |\n";
+	std::cout << "--------------------" << std::string(box_length, '-') << "--\n";
+	
 	return 0;
 }
